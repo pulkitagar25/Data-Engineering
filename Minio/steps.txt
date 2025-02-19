@@ -1,0 +1,7 @@
+First, run the minio server
+""" C:\Users\Pulkit\Downloads>minio.exe server C:\minio\data """
+Login minio in browser
+Activate the virtual environment
+Run the app.py file
+check creditals
+heyy, this is for testing minio bucket
