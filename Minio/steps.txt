@@ -1,5 +1,5 @@
 First, run the minio server
-""" C:\Users\Pulkit\Downloads>minio.exe server C:\minio\data """
+""" C:\Users\Downloads>minio.exe server C:\minio\data """
 Login minio in browser
 Activate the virtual environment
 Run the app.py file
