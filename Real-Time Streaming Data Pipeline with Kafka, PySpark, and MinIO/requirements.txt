@@ -1,0 +1,6 @@
+kafka-python
+pyspark
+boto3
+pandas
+fastparquet
+pyarrow
