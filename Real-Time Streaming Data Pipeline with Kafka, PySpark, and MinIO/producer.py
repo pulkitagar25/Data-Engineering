@@ -8,7 +8,7 @@ producer = KafkaProducer(bootstrap_servers='localhost:9092',
 
 for i in range(100):
     data = {'number': i}
-    producer.send('pracoo', value=data)
+    producer.send('datastream', value=data)
     print(f'Sent: {data}')
     time.sleep(1)
 
