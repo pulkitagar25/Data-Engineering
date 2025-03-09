@@ -3,16 +3,21 @@ import json
 import boto3
 import pandas as pd
 import io
-
+import os
+from dotenv import load_dotenv
 import sys
 
+# Ensure proper encoding for console output
 sys.stdout.reconfigure(encoding='utf-8')
 sys.stderr.reconfigure(encoding='utf-8')
 
-# Kafka Consumer
+# Load environment variables from .env file
+load_dotenv()
+
+# Kafka Consumer Configuration
 consumer = KafkaConsumer(
     'datastream',
-    bootstrap_servers='localhost:9092',
+    bootstrap_servers=os.getenv("KAFKA_BROKER", "localhost:9092"),
     auto_offset_reset='earliest',
     enable_auto_commit=True,
     group_id='my-group',
@@ -20,10 +25,10 @@ consumer = KafkaConsumer(
 )
 
 # MinIO Configuration
-MINIO_ENDPOINT = "http://127.0.0.1:9000"
-MINIO_ACCESS_KEY = " "
-MINIO_SECRET_KEY = ""
-BUCKET_NAME = "streaming-bucket"
+MINIO_ENDPOINT = os.getenv("MINIO_ENDPOINT", "http://127.0.0.1:9000")
+MINIO_ACCESS_KEY = os.getenv("MINIO_ACCESS_KEY")
+MINIO_SECRET_KEY = os.getenv("MINIO_SECRET_KEY")
+BUCKET_NAME = os.getenv("MINIO_BUCKET_NAME", "streaming-bucket")
 
 # Initialize MinIO Client
 s3_client = boto3.client(
