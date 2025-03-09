@@ -11,7 +11,7 @@ sys.stderr.reconfigure(encoding='utf-8')
 
 # Kafka Consumer
 consumer = KafkaConsumer(
-    'pracoo',
+    'datastream',
     bootstrap_servers='localhost:9092',
     auto_offset_reset='earliest',
     enable_auto_commit=True,
@@ -21,8 +21,8 @@ consumer = KafkaConsumer(
 
 # MinIO Configuration
 MINIO_ENDPOINT = "http://127.0.0.1:9000"
-MINIO_ACCESS_KEY = "fL5CShmE7V1uQ2LcSazD"
-MINIO_SECRET_KEY = "NPKOii7HyccNCgURB6kuL6Dzb0iyHbGUzLzg5LYf"
+MINIO_ACCESS_KEY = " "
+MINIO_SECRET_KEY = ""
 BUCKET_NAME = "streaming-bucket"
 
 # Initialize MinIO Client
