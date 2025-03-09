@@ -4,8 +4,8 @@ from pyspark.sql import SparkSession
 spark = SparkSession.builder \
     .appName("KafkaToMinIO") \
     .config("spark.hadoop.fs.s3a.endpoint", "http://127.0.0.1:9000") \
-    .config("spark.hadoop.fs.s3a.access.key", "fL5CShmE7V1uQ2LcSazD") \
-    .config("spark.hadoop.fs.s3a.secret.key", "NPKOii7HyccNCgURB6kuL6Dzb0iyHbGUzLzg5LYf") \
+    .config("spark.hadoop.fs.s3a.access.key", Access_key) \
+    .config("spark.hadoop.fs.s3a.secret.key", Secret_key) \
     .config("spark.hadoop.fs.s3a.path.style.access", "true") \
     .config("spark.hadoop.fs.s3a.connection.ssl.enabled", "false") \
     .config("spark.hadoop.fs.s3a.impl", "org.apache.hadoop.fs.s3a.S3AFileSystem") \
