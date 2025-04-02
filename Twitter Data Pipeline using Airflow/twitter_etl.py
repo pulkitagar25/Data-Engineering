@@ -2,10 +2,11 @@ import tweepy
 import pandas as pd
 from datetime import datetime
 import time
+import boto3
 
 def run_twitter_etl():
     # Twitter API v2 Bearer Token
-    bearer_token = "AAAAAAAAAAAAAAAAAAAAAJ9k0QEAAAAAQoJkp20yMjhL6EE3KexwiKQTYss%3DBBPWjS9JIZ0eY3itrrNQtxUj5n8wQT3zb6YU1khS4ZqIYGixwb"  
+    bearer_token = "YOUR_BEARER_TOKEN"  
     
     # Authenticate using tweepy Client
     client = tweepy.Client(bearer_token=bearer_token)
@@ -34,9 +35,12 @@ def run_twitter_etl():
     
     # Convert to DataFrame and save to CSV
     df = pd.DataFrame(tweet_list)
-    df.to_csv("refined_tweets.csv", index=False)
+    csv_file = "refined_tweets.csv"
+    df.to_csv(csv_file, index=False)
     
-    print("✅ Tweets fetched successfully!")
+    # Upload CSV to S3
+    s3 = boto3.client("s3", aws_access_key_id="YOUR_AWS_ACCESS_KEY", aws_secret_access_key="YOUR_AWS_SECRET_KEY")
+    s3.upload_file(csv_file, "your-s3-bucket-name", "refined_tweets.csv")
 
 # Run the function
 run_twitter_etl()
